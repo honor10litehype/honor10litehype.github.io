@@ -82,9 +82,9 @@ kill me :3
             align-items: center;
         }
         .spotify img {
-            margin-right: 15px;
-            width: 50px;
-            height: 50px;
+            margin-right: 90px;
+            width: 300px;
+            height: 300px;
         }
     </style>
 </head>
@@ -107,7 +107,7 @@ kill me :3
                 if (spotifyData) {
                     statusElement.innerHTML = `
                         <img src="${spotifyData.album_art_url}" alt="Album Art">
-                        Listening to: <strong>${spotifyData.song}</strong> by ${spotifyData.artist}
+                        Listening to: <strong>${spotifyData.song}</strong>-by-${spotifyData.artist}
                     `;
                 } else {
                     statusElement.textContent = 'Not listening to anything on Spotify right now.';
@@ -120,7 +120,7 @@ kill me :3
         }
 
         fetchSpotifyStatus();
-        setInterval(fetchSpotifyStatus, 10000); // Update every 10 seconds
+        setInterval(fetchSpotifyStatus, 60000); // Update every 60 seconds
     </script>
 </body>
 </html>
