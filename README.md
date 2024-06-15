@@ -1,1 +1,1 @@
-#hadd legyen szeretik a pulyák
+hadd legyen szeretik a pulyák
