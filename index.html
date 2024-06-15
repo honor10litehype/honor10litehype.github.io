@@ -72,12 +72,19 @@ kill me :3
         <source src="https://fileb.in/e4ki.mp4" type="video/mp4">
        Your browser does not support the video tag.
    </video>
-     <title>Spotify Status</title>
+ <title>Spotify Status</title>
     <style>
         .spotify {
             font-size: 1.2em;
             font-weight: bold;
             color: crimson;
+            display: flex;
+            align-items: center;
+        }
+        .spotify img {
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -94,7 +101,10 @@ kill me :3
             const spotifyData = data.data.spotify;
 
             if (spotifyData) {
-                statusElement.innerHTML = `Listening to: <strong>${spotifyData.song}</strong> by ${spotifyData.artist}`;
+                statusElement.innerHTML = `
+                    <img src="${spotifyData.album_art_url}" alt="Album Art">
+                    Listening to: <strong>${spotifyData.song}</strong> by ${spotifyData.artist}
+                `;
             } else {
                 statusElement.textContent = 'Not listening to anything on Spotify right now.';
             }
