@@ -1,1 +1,1 @@
-# honor10litehype.github.io
+#hadd legyen szeretik a pulyák
