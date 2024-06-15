@@ -3,7 +3,7 @@ async function fetchCurrentlyPlaying() {
   try {
     const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
       headers: {
-        'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Replace with your access token
+        'Authorization': 'Bearer 11dFghVXANMlKmJXsNCbNl', // Replace with your access token
       },
     });
 
@@ -42,4 +42,4 @@ async function updateSongInfo() {
 
 // Update song info initially and every 10 seconds
 updateSongInfo();
-setInterval(updateSongInfo, 10000); // Update every 10 seconds
+setInterval(updateSongInfo, 5000); // Update every 5 seconds
