@@ -72,75 +72,19 @@ kill me :3
         <source src="https://fileb.in/e4ki.mp4" type="video/mp4">
        Your browser does not support the video tag.
    </video>
-const fetch = require('node-fetch');
+  <title>Now Playing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Now Playing</h1>
+    <div class="song-info" id="song-info">
+      <!-- Song information will be displayed here -->
+    </div>
+  </div>
 
-// Your Discord user ID
-const userID = '896368164026335242';
-
-// Your Spotify API token
-const spotifyToken = 'BQBY_YXeOTMVkwF3QvKXYbP-n3iZKoMTitrLyoqBkSJId0hdFUnNb_S_LJCe2YhMgKBuX4u9l7hQ0Wi14TekPr1-PpzVq6kITEzGnCrRVrhR7owZKlH0HT9pjGY60GcqnQe7NrE7WrXPTOf9kx8VpsQU3AgjXsTaFL-K2ybY227MReTXYS9ulw0lvRy9Dy1vzg-hLSNdCd18nl1maG8WdWWEaFF99s7S1SljRlsJWYROAk0CPTTS1fdPdip8NOq4-ATlwktDA3T0Bbg9SsVk';
-
-// Function to fetch currently playing song from Spotify
-async function getCurrentlyPlaying() {
-    const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-        headers: {
-            'Authorization': 'Bearer ' + spotifyToken
-        }
-    });
-    if (response.ok) {
-        const data = await response.json();
-        return data;
-    } else {
-        console.log('Error fetching currently playing song:', response.statusText);
-        return null;
-    }
-}
-
-// Function to send update to Lanyard
-async function updateLanyard() {
-    const songData = await getCurrentlyPlaying();
-    if (songData && songData.is_playing) {
-        const songName = songData.item.name;
-        const albumImage = songData.item.album.images[0].url;
-
-        const body = {
-            "data": {
-                "spotify": `${songName} - ${songData.item.artists[0].name}`,
-                "listening_to_spotify": true,
-                "spotify_album_art_url": albumImage
-            }
-        };
-
-        await fetch(`https://api.lanyard.rest/v1/users/${userID}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
-
-        console.log('Lanyard updated successfully!');
-    } else {
-        // If not playing anything, set listening_to_spotify to false
-        const body = {
-            "data": {
-                "listening_to_spotify": false
-            }
-        };
-
-        await fetch(`https://api.lanyard.rest/v1/users/${userID}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
-
-        console.log('Not listening to Spotify.');
-    }
-}
-
-// Update Lanyard every 15 seconds
-setInterval(updateLanyard, 15000);
+  <script src="script.js"></script>
+</body>
+</html>
 
 
