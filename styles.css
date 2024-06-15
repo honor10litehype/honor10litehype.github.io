@@ -4,6 +4,17 @@
   text-align: center;
 }
 
+.song-info {
+  background-color: silver;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
 .song-info img {
   max-width: 200px;
+}
+
+.lanyard-badge img {
+  max-width: 150px;
 }
