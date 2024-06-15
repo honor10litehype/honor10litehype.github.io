@@ -73,47 +73,15 @@ kill me :3
        Your browser does not support the video tag.
     </video>
 
-</body>
-</html>
-
-
-    <title>Discord Status</title>
-    <style>
-        .status {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .online {
-            color: green;
-        }
-        .offline {
-            color: red;
-        }
-        .idle {
-            color: orange;
-        }
-        .dnd {
-            color: darkred;
-        }
-    </style>
-</head>
-<body>
-    <div id="discord-status" class="status">Loading...</div>
-
-    <script>
-        async function fetchStatus() {
-            const userId = '896368164026335242'; // Replace with your Discord User ID
-            const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-            const data = await response.json();
-            const status = data.data.discord_status;
-            const statusElement = document.getElementById('discord-status');
-
-            statusElement.textContent = status.charAt(0).toUpperCase() + status.slice(1);
-            statusElement.classList.add(status);
-        }
-
-        fetchStatus();
-    </script>
+{
+  op: 2,
+  d: {
+    // subscribe_to_ids should be an array of user IDs you want to subscribe to presences from
+    // if Lanyard doesn't monitor an ID specified, it won't be included in INIT_STATE
+    subscribe_to_ids: ["94490510688792576"]
+  }
+}
+            
 </body>
 </html>
 
