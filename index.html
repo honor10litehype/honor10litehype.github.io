@@ -107,7 +107,7 @@ kill me :3
                 if (spotifyData) {
                     statusElement.innerHTML = `
                         <img src="${spotifyData.album_art_url}" alt="Album Art">
-                        Listening to: <strong>${spotifyData.song}</strong>-by-${spotifyData.artist}
+                        Listening to: <strong>${spotifyData.song}</strong> by ${spotifyData.artist}
                     `;
                 } else {
                     statusElement.textContent = 'Not listening to anything on Spotify right now.';
