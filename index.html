@@ -73,15 +73,35 @@ kill me :3
        Your browser does not support the video tag.
     </video>
 
-{
-  op: 2,
-  d: {
-    // subscribe_to_ids should be an array of user IDs you want to subscribe to presences from
-    // if Lanyard doesn't monitor an ID specified, it won't be included in INIT_STATE
-    subscribe_to_ids: ["94490510688792576"]
-  }
-}
-            
+
+                <title>Spotify Status</title>
+    <style>
+        .spotify {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="spotify-status" class="spotify">Loading...</div>
+
+    <script>
+        async function fetchSpotifyStatus() {
+            const userId = '896368164026335242'; // Replace with your Discord User ID
+            const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+            const data = await response.json();
+
+            const statusElement = document.getElementById('spotify-status');
+            const spotifyData = data.data.spotify;
+
+            if (spotifyData) {
+                statusElement.innerHTML = `Listening to: <strong>${spotifyData.song}</strong> by ${spotifyData.artist}`;
+            } else {
+                statusElement.textContent = 'Not listening to anything on Spotify right now.';
+            }
+        }
+
+        fetchSpotifyStatus();
+    </script>
 </body>
 </html>
-
